@@ -3,7 +3,36 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>tp2</title>
+    <title>Formulario de Datos</title>
+    <style>
+        button{  width: 10%;
+            display: flex;
+            align-items:center ;
+            justify-content: center;
+            padding-top: center;}
+            .buttons button{
+            width: 100px;
+            height: 30px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid blue;
+            background-color: #0a52b5;
+            color: aliceblue;
+            font-size: 15px;}   
+            
+        body{
+            font-family: sans-serif;
+            background-color: lightsteelblue;
+            padding-top: center;
+            justify-content: center;
+            margin-left: center;
+            margin-right: center;
+        }
+        h2,h3{
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(1, 1, 105);
+        }
+    </style>
     <script> 
         function mostrarDatos(){
                 vnombre=document.getElementById("nombre").value;
@@ -13,14 +42,30 @@
                 vfecha=document.getElementById("fecha").value;
                 vdomicilio=document.getElementById("dom").value;
                 vlocalidad=document.getElementById("loc").value;
+                /*rangos*/
+                var rango1 = document.getElementById("rango1").value;
+                var rango2 = document.getElementById("rango2").value;
+                var rango3 = document.getElementById("rango3").value;
+                var rango4 = document.getElementById("rango4").value;
                 
-                /*a*/
+                var checkboxes = document.getElementsByName("idioma");
+                var idiomasSeleccionados = [];
+                for (var i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked) {
+                        idiomasSeleccionados.push(checkboxes[i].value);
+                    }
+                }
+                vespaniol=document.getElementById("box1").value;
+                vingles=document.getElementById("box2").value;
+                vfrances=document.getElementById("box3").value;
+                vchino=document.getElementById("box4").value;
+                /*a
                 idiomas=[];
                 vespaniol=document.getElementById("box1");
                 vingles=document.getElementById("box2");
                 vfrances=document.getElementById("box3");
                 vchino=document.getElementById("box4");
-                /*si estan marcadas se agregan*/
+                /*si estan marcadas se agregan*//*
                 if(vespaniol.checked){
                     idiomas.push(vespaniol.value);
                 }
@@ -33,12 +78,13 @@
                 if(vchino.checked){
                     idiomas.push(vchino.value);
                 }
-                /*Para imprimir todas las opciones juntas se concatenan*/
+                /*Para imprimir todas las opciones juntas se concatenan*//*
                 idiom=" ";
                 for(i=0; i<idiomas.length;i++){
                     element=idiomas[i];
                     idiom+=element+" - ";
-                }
+                }*/
+                
                 
                 document.write("Nombre: "+vnombre+"<br/>")
                 
@@ -47,16 +93,20 @@
                 document.write("Fecha de nacimiento: "+vfecha+"<br/>")
                 document.write("Domicilio: "+vdomicilio+"<br/>")
                 document.write("Localidad: "+vlocalidad+"<br/>")
-                document.write("Idiomas seleccionados: "+idiom+"<br/>")
+                document.write("Idiomas seleccionados: " + idiomasSeleccionados.join(", ")+"<br/>");
+                document.write("Usted sabe de "+vespaniol+" un porcentaje de: "+rango1+"%<br>")
+                document.write("Usted sabe de "+vingles+" un porcentaje de: "+rango2+"%<br>")
+                document.write("Usted sabe de "+vfrances+" un porcentaje de: "+rango3+"%<br>")
+                document.write("Usted sabe de "+vchino+" un porcentaje de: "+rango4+"%<br>")
                 
         }
     </script>
 </head>        
 <body>
         
-        <h2>Formulario carga de Datos</h2>
+        <h2><u><p>Formulario Carga de Datos</p></u></h2>
         <p></p>
-        <h3>Datos Personales</h3>
+        <h3><u>Datos Personales</u></h3>
         <form action="" name="form" method="post">
             <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre">
@@ -76,28 +126,30 @@
             <label for="loc">Localidad:</label>
                 <input type="text" id="loc"><br>
 
-            <h3>Idiomas que conoce:</h3>
+            <h3><U>Idiomas que conoce:</U></h3>
 
             <label for="box1">Español </label>
-                <input type="checkbox" name="idioma" id="box1" value="espaniol">
-                <input type="range" step="10" min="0" max="100" id="rango1" value="50"><br>
+                <input type="checkbox" name="idioma" id="box1" value="español">
+                <input type="range" step="10" min="0" max="100" name="idioma" id="rango1" value="50"><br>
             <label for="box2">Ingles</label>
                 <input type="checkbox" name="idioma" id="box2" value="ingles">
-                <input type="range" step="10" min="0"  max="100" id="rango2" value="50"><br>
+                <input type="range" step="10" min="0" max="100" name="idioma" id="rango2" value="50"><br>
             <label for="box3">Frances</label>
                 <input type="checkbox" name="idioma" id="box3" value="frances">
-                <input type="range" step="10" min="0" max="100" id="rango3" value="50" ><br>
+                <input type="range" step="10" min="0" max="100" name="idioma" id="rango3" value="50" ><br>
             <label for="box3">Chino</label>
                 <input type="checkbox" name="idioma" id="box4" value="chino">
-                <input type="range" step="10" min="0" max="100" id="rango4" value="50"><br>
+                <input type="range" step="10" min="0" max="100" name="idioma" id="rango4" value="50"><br>
+            
             <p></p>
-
             </select>
-
+            
+            <div class="buttons">
             <button type="submit" onClick="mostrarDatos()">Enviar</button>
             <button type="reset">Borrar</button>
+            </div>
 
-
-        </form>
+        
+    </form>
 </body>
 </html>
