@@ -1,74 +1,103 @@
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <script>
-            function mostrarDatos(){
+<head>
+    <meta charset="utf-8">
+    <title>tp2</title>
+    <script> 
+        function mostrarDatos(){
                 vnombre=document.getElementById("nombre").value;
+                
                 vapellido=document.getElementById("apell").value;
                 vdni=document.getElementById("num").value;
-                vfecha=document.getElementById("Fecha");
+                vfecha=document.getElementById("fecha").value;
                 vdomicilio=document.getElementById("dom").value;
                 vlocalidad=document.getElementById("loc").value;
-                var vidioma=document.getElementById("Idiomas").value;
-
-                document.write("Datos ingresados: <br/>")
+                
+                /*a*/
+                idiomas=[];
+                vespaniol=document.getElementById("box1");
+                vingles=document.getElementById("box2");
+                vfrances=document.getElementById("box3");
+                vchino=document.getElementById("box4");
+                /*si estan marcadas se agregan*/
+                if(vespaniol.checked){
+                    idiomas.push(vespaniol.value);
+                }
+                if(vingles.checked){
+                    idiomas.push(vingles.value);
+                }
+                if(vfrances.checked){
+                    idiomas.push(vfrances.value);
+                }
+                if(vchino.checked){
+                    idiomas.push(vchino.value);
+                }
+                /*Para imprimir todas las opciones juntas se concatenan*/
+                idiom=" ";
+                for(i=0; i<idiomas.length;i++){
+                    element=idiomas[i];
+                    idiom+=element+" - ";
+                }
+                
                 document.write("Nombre: "+vnombre+"<br/>")
+                
                 document.write("Apellido: "+vapellido+"<br/>")
                 document.write("Dni: "+vdni+"<br/>")
                 document.write("Fecha de nacimiento: "+vfecha+"<br/>")
                 document.write("Domicilio: "+vdomicilio+"<br/>")
                 document.write("Localidad: "+vlocalidad+"<br/>")
-                document.write("Idioma que conoces: "+vidioma+"<br/>")
-
-            }
-            function imprimir() {
-                document.write("<h2>Se muestran los datos<h2/>"+mostrarDatos()+"<br/>")
-            }
-        </script>
-		
+                document.write("Idiomas seleccionados: "+idiom+"<br/>")
+                
+        }
+    </script>
+</head>        
+<body>
         
-    </head>
-    <body>
         <h2>Formulario carga de Datos</h2>
         <p></p>
         <h3>Datos Personales</h3>
         <form action="" name="form" method="post">
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre">
+                <input type="text" id="nombre">
             <p></p>
             <label for="apell">Apellido:</label>
-            <input type="text" id="apell">
+                <input type="text" id="apell">
             <p></p>
             <label for="num">Numero DNI:</label>
-			<input type="number" id="num"><br>
+			    <input type="number" id="num"><br>
             <p></p>
             <label for="Fecha">Fecha de Nacimiento:</label>
-            <input type="date" id="Fecha"><br>
+                <input type="date" id="fecha"><br>
             <p></p>
             <label for="dom">Domicilio:</label>
-            <input type="text" id="dom"><br>
+                <input type="text" id="dom"><br>
             <p></p>
             <label for="loc">Localidad:</label>
-            <input type="text" id="loc"><br>
+                <input type="text" id="loc"><br>
+
             <h3>Idiomas que conoce:</h3>
+
             <label for="box1">Español </label>
-            <input type="checkbox" name="Idiomas" id="box1" value="espaniol">
-            <input type="range" step="10" min="0" max="100" id="box1"><br>
+                <input type="checkbox" name="idioma" id="box1" value="espaniol">
+                <input type="range" step="10" min="0" max="100" id="rango1" value="50"><br>
             <label for="box2">Ingles</label>
-            <input type="checkbox" name="Idiomas" id="box2" value="ingles">
-            <input type="range" step="10" min="0"  max="100" id="box2"><br>
+                <input type="checkbox" name="idioma" id="box2" value="ingles">
+                <input type="range" step="10" min="0"  max="100" id="rango2" value="50"><br>
             <label for="box3">Frances</label>
-            <input type="checkbox" name="Idiomas" id="box3" value="frances">
-            <input type="range" step="10" min="0" max="100" id="box3"><br>
+                <input type="checkbox" name="idioma" id="box3" value="frances">
+                <input type="range" step="10" min="0" max="100" id="rango3" value="50" ><br>
             <label for="box3">Chino</label>
-            <input type="checkbox" name="Idiomas" id="box4" value="chino">
-            <input type="range" step="10" min="0" max="100" id="box4"><br>
+                <input type="checkbox" name="idioma" id="box4" value="chino">
+                <input type="range" step="10" min="0" max="100" id="rango4" value="50"><br>
             <p></p>
+
             </select>
-            <button type="submit" onClick="imprimir()">Enviar</button>
+
+            <button type="submit" onClick="mostrarDatos()">Enviar</button>
             <button type="reset">Borrar</button>
-            
-            
+
+
         </form>
-    </body>
+</body>
 </html>
